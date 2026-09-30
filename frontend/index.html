@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartPark | Smart Parking & EV Charging</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#" class="brand">
+                <div class="brand-icon">SP</div>
+
+                <div>
+                    <div class="brand-name">SmartPark</div>
+                    <div class="brand-subtitle">
+                        Smart Parking & EV Charging
+                    </div>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="#home">Home</a>
+                <a href="#stations">Stations</a>
+                <a href="#features">Features</a>
+                <a href="#admin">Admin</a>
+
+            </nav>
+
+            <a href="#stations" class="nav-button">
+                Find Parking
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        ⚡ SMART MOBILITY PLATFORM
+                    </span>
+
+                    <h1>
+                        Park smarter.
+                        <span>Charge faster.</span>
+                    </h1>
+
+                    <p>
+                        Find available parking and EV charging
+                        stations in one simple platform.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#stations" class="primary-button">
+                            Explore Stations
+                        </a>
+
+                        <a href="#features" class="secondary-button">
+                            Learn More
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-section">
+
+            <div class="stats-container">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">⚡</div>
+
+                    <div>
+                        <div id="totalStations" class="stat-number">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Charging Stations
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">✓</div>
+
+                    <div>
+                        <div id="availableStations" class="stat-number">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Available Now
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">🔌</div>
+
+                    <div>
+                        <div id="totalPower" class="stat-number">
+                            0 kW
+                        </div>
+
+                        <div class="stat-label">
+                            Connected Power
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">📍</div>
+
+                    <div>
+                        <div id="locationsCount" class="stat-number">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Locations
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATIONS ================= -->
+
+        <section id="stations" class="stations-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        LIVE AVAILABILITY
+                    </span>
+
+                    <h2>
+                        Find a charging station
+                    </h2>
+
+                    <p>
+                        Browse available EV charging stations
+                        connected to the SmartPark system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-panel">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by station or location..."
+                    >
+
+                </div>
+
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="available">
+                        Available
+                    </option>
+
+                    <option value="occupied">
+                        Occupied
+                    </option>
+
+                    <option value="maintenance">
+                        Maintenance
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    class="refresh-button"
+                    onclick="loadStations()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <!-- STATION CARDS -->
+
+            <div id="stationContainer" class="station-grid">
+
+                <div class="loading-card">
+                    <div class="loader"></div>
+                    <p>Loading stations...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section id="features" class="features-section">
+
+            <div class="section-heading centered">
+
+                <span class="section-tag">
+                    WHY SMARTPARK
+                </span>
+
+                <h2>
+                    One platform for smarter parking
+                </h2>
+
+                <p>
+                    Designed to make EV charging and parking
+                    easier, faster and more convenient.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        EV Charging
+                    </h3>
+
+                    <p>
+                        Find charging stations and view
+                        connector type, power and pricing.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        Smart Locations
+                    </h3>
+
+                    <p>
+                        Quickly discover available stations
+                        by location.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Live Information
+                    </h3>
+
+                    <p>
+                        View station status and power
+                        information directly from the system.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🛡
+                    </div>
+
+                    <h3>
+                        Central Management
+                    </h3>
+
+                    <p>
+                        Manage charging stations and
+                        infrastructure from one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ADMIN ================= -->
+
+        <section id="admin" class="admin-section">
+
+            <div class="admin-container">
+
+                <div class="admin-copy">
+
+                    <span class="section-tag">
+                        ADMIN PANEL
+                    </span>
+
+                    <h2>
+                        Add a new charging station
+                    </h2>
+
+                    <p>
+                        Add station information directly to
+                        your MySQL database through the Java backend.
+                    </p>
+
+                </div>
+
+
+                <form id="stationForm" class="station-form">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                Station Name
+                            </label>
+
+                            <input
+                                type="text"
+                                name="station_name"
+                                placeholder="Example: SmartPark A"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                name="location"
+                                placeholder="Example: Aurangabad"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Charging Slot
+                            </label>
+
+                            <input
+                                type="text"
+                                name="charging_slot"
+                                placeholder="Example: A01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Connector Type
+                            </label>
+
+                            <select name="connector_type" required>
+
+                                <option value="">
+                                    Select connector
+                                </option>
+
+                                <option value="Type 2">
+                                    Type 2
+                                </option>
+
+                                <option value="CCS">
+                                    CCS
+                                </option>
+
+                                <option value="CHAdeMO">
+                                    CHAdeMO
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Status
+                            </label>
+
+                            <select name="status" required>
+
+                                <option value="Available">
+                                    Available
+                                </option>
+
+                                <option value="Occupied">
+                                    Occupied
+                                </option>
+
+                                <option value="Maintenance">
+                                    Maintenance
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Power (kW)
+                            </label>
+
+                            <input
+                                type="number"
+                                name="power_kw"
+                                step="0.1"
+                                placeholder="7.5"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Price Per Unit
+                            </label>
+
+                            <input
+                                type="number"
+                                name="price_per_unit"
+                                step="0.01"
+                                placeholder="12"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button">
+
+                        Add Station
+
+                    </button>
+
+
+                    <div
+                        id="message"
+                        class="form-message">
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= STATION MODAL ================= -->
+
+    <div
+        id="stationModal"
+        class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div>
+
+                <div class="brand-name">
+                    SmartPark
+                </div>
+
+                <p>
+                    Smart parking and EV charging
+                    management system.
+                </p>
+
+            </div>
+
+
+            <div class="footer-right">
+
+                <span>
+                    Java + MySQL
+                </span>
+
+                <span>
+                    HTML + CSS + JavaScript
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 SmartPark. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
